@@ -1,0 +1,25 @@
+.nav-bar ul {
+    list-style-type: none;
+}
+
+.nav-bar li {
+    display: inline;
+    font-size: 20pt;
+    padding-right: 50px;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nav-bar {
+    background-color: rgb(189, 189, 189);
+    border-radius: 5px;
+    border-color: #535353;
+    border-style: solid;
+    margin: auto;
+    text-align: center;
+}
+
+.nav-bar a {
+    text-decoration: none;
+}
+
