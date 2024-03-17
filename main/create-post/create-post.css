@@ -49,3 +49,19 @@ h2 {
     margin-top: 10px;
     border-radius: 5px;
 }
+
+.returnBtn {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.returnBtn:hover {
+    background-color: #555;
+}

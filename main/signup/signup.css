@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -59,4 +60,20 @@ body, html {
 
 .signin-text a:hover {
     text-decoration: underline;
+}
+
+.returnBtn {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.returnBtn:hover {
+    background-color: #555;
 }
