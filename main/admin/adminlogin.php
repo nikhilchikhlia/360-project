@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Database connection parameters
 $host = 'localhost';
 $dbname = 'testing';
 $dbUsername = 'root';
@@ -14,22 +15,20 @@ try {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM users WHERE username = :username AND password = :password LIMIT 1";
+        // Adjust the SQL statement to query your admin users table or column
+        $sql = "SELECT * FROM admin WHERE username = :username AND password = :password LIMIT 1";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ':username' => $username, 
-            ':password' => $password
-        ]);
-
+        $stmt->execute([':username' => $username, ':password' => $password]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        
         if ($user) {
-            $_SESSION['username'] = $user['username'];
-            echo "Login successful. Redirecting...";
-            header("Location: ../landing/landing.html");
+            // Successful login
+            $_SESSION['admin_username'] = $user['username'];
+            echo "Admin login successful. Redirecting...";
+            header("Location: admindashboard.php");
             exit;
         } else {
-            echo "<p>Invalid credentials. Please <a href='login.html'>try again</a>.</p>";
+            echo "<p>Invalid admin credentials. Please <a href='adminlogin.html'>try again</a>.</p>";
         }
     }
 } catch (PDOException $e) {

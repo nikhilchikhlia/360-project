@@ -21,14 +21,14 @@
         }
 
         try {
-            $connString = "mysql:host=localhost;dbname=db_55015176";
-            $user = "55015176";
-            $connPassword = "55015176";
+            $connString = "mysql:host=localhost;dbname=testing";
+            $user = "root";
+            $connPassword = "";
     
             $pdo = new PDO($connString, $user, $connPassword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-            $sql = "INSERT INTO test_table (username, first_name, last_name, email, password) 
+            $sql = "INSERT INTO users (username, first_name, last_name, email, password) 
                     VALUES (:username, :firstName, :lastName, :email, :password)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
@@ -40,6 +40,7 @@
             ]);
     
             echo "User successfully registered.";
+            header("Location: ../login/login.html");
         } catch (PDOException $e) {
             die($e->getMessage());
         }
