@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 
+<?php 
+session_start();
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+} else {
+    echo "<p>You need to be logged in to create a post, please login <a href="../login/login.html">here</a> first.</p>"
+}
+?>
+
 <head>
     <meta charset="utf-8">
     <title>Create a Post</title>
