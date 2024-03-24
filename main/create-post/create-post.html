@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <a href="../landing/landing.html"><button class="returnBtn">Return Home</button></a>
+    <a href="../landing/landing.html"><button type="button" class="returnBtn">Return Home</button></a>
     <div class="post-container">
         <h2>Create a Post</h2>
-        <form method="post">
+        <form method="post" action="create-post.php" enctype="multipart/form-data">
             <div class="post-input">
                 <input type="text" name="post-title" placeholder="Post Title" required>
             </div>
@@ -22,6 +22,16 @@
             </div>
             <div class="post-input">
                 <input type="textarea" name="description" placeholder="Post Description" required>
+            </div>
+            <div class="post-input">
+                <label for="category">Choose a category:</label>
+                <select id="category" name="category" required>
+                    <option value="Sports">Sports</option>
+                    <option value="TV">TV</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Work">Work</option>
+                    <option value="Others">Others</option>
+                </select>
             </div>
             <input type="submit" class="submit">
         </form>
