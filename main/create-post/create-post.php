@@ -2,9 +2,11 @@
 session_start();
 
 // Check if the user is logged in
-if (!isset($_SESSION['username'])) {
-    echo "You must be logged in to create a post.";
-    exit;
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+} else {
+    heading("Location: login-message.html");
 }
 
 // Assuming you've already connected to your database above this point

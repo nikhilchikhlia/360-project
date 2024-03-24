@@ -25,6 +25,7 @@ try {
 
         if ($user) {
             $_SESSION['username'] = $user['username'];
+            $_SESSION['loggedin'] = true;
             echo "Login successful. Redirecting...";
             header("Location: ../landing/landing.html");
             exit;
