@@ -2,7 +2,8 @@
 session_start();
 
 // Replace 'root' and '' with your actual database username and password
-$pdo = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+
+$pdo = new PDO('mysql:host=localhost;dbname=db_55015176', '55015176', '55015176');
 
 if (isset($_SESSION['username'])) {
     $stmt = $pdo->prepare("SELECT image FROM profile WHERE userprofile = ?");
@@ -18,12 +19,9 @@ if (isset($_SESSION['username'])) {
     } else {
         // If no image is found, you can choose to display a placeholder or send a default image
         header('Content-Type: image/png');
-        // Adjust the path to point to a real placeholder image on your server
-        // Example: echo file_get_contents('path/to/placeholder.png');
-        // For simplicity, we'll not output anything here
+
     }
 } else {
-    // If the user is not logged in, output a placeholder or handle accordingly
-    // This example will simply terminate without output
+
 }
 ?>

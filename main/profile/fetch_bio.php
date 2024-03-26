@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=db_55015176', '55015176', '55015176');
 
 if (isset($_SESSION['username'])) {
     $stmt = $pdo->prepare("SELECT bio FROM profile WHERE userprofile = ?");
