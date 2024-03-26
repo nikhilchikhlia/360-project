@@ -1,24 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" href="profile.css">
-</head>
-
-<body>
-
-    <a href="../landing/landing.html"><button class="returnBtn">Return Home</button></a>
-
+    </head>
+    <body>
+    <a href="../landing/landing.html"><button type="button" class="returnBtn">Return Home</button></a>
     <div class="profile-container">
-        <div class="profile-avatar"></div>
-        <div class="profile-name">Name</div>
-        <input type="text" class="bio-input" placeholder="Add a bio">
-        <button class="logout-btn">Log Out</button>
+        <div class="profile-avatar" id="profileAvatar">
+            <!-- Placeholder for user image -->
+        </div>
+        <div class="profile-name" id="profileName">Loading...</div>
+        <div class="profile-bio" id="profileBio">Bio loading...</div> <!-- Bio placeholder -->
+
+        <!-- Form for updating bio -->
+        <form action="bio.php" method="post">
+            <input type="text" name="bio" class="bio-input" placeholder="Add a bio">
+            <button type="submit" class="btn">Change Bio</button>
+        </form>
+
+        <!-- Form for updating user image -->
+        <form action="userimage.php" method="post" enctype="multipart/form-data">
+            <label for="image-upload">Change photo:</label>
+            <input type="file" id="image-upload" name="image-upload" accept="image/*">
+            <button type="submit" class="btn">Upload Image</button>
+        </form>
+
+        <a href="logout.php" class="logout-btn">Log Out</a>
     </div>
 
-</body>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('profile.php') // Fetches and displays username
+        .then(response => response.text())
+        .then(username => {
+            document.getElementById('profileName').textContent = username;
+        })
+        .catch(error => {
+            console.error('Error fetching username:', error);
+            document.getElementById('profileName').textContent = 'Error loading username';
+        });
 
-</html>
+        fetch('fetch_bio.php') // Fetches and displays bio
+        .then(response => response.text())
+        .then(bio => {
+            document.getElementById('profileBio').textContent = bio;
+        })
+        .catch(error => {
+            console.error('Error fetching bio:', error);
+            document.getElementById('profileBio').textContent = 'Error loading bio';
+        });
+
+        fetch('fetch_image.php') // Fetches and displays image
+        .then(response => response.blob())
+        .then(imageBlob => {
+            if (imageBlob.size > 0) {
+                var imageUrl = URL.createObjectURL(imageBlob);
+                document.getElementById('profileAvatar').innerHTML = `<img src="${imageUrl}" alt="Profile Image" style="width:100px;">`;
+            } else {
+                document.getElementById('profileAvatar').textContent = 'No image found';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching image:', error);
+            document.getElementById('profileAvatar').textContent = 'Error loading image';
+        });
+    });
+    </script>
+    </body> 
+    </html>
