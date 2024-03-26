@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -18,20 +18,40 @@
         </ul>
     </div>
 
-    <div class="sample-post-1">
-        <p>This is a sample title. <span class="user1">Post created by Sample User 123</span></p>
-        <p>This is a sample post to describe some type of discussion that the user wants to talk about.</p>
-    </div>
+    <!-- Container where posts will be dynamically inserted -->
+    <div id="postsContainer"></div>
 
-    <div class="sample-post-2">
-        <p>This is a sample title. <span class="user1">Post created by Sample User 123</span></p>
-        <p>This is a sample post to describe some type of discussion that the user wants to talk about.</p>
-    </div>
+    <script>
+    function fetchPosts() {
+        fetch('get_posts.php') // Adjust the path if necessary
+        .then(response => response.json())
+        .then(posts => {
+            let postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = ''; // Clear existing posts before appending new ones
+            posts.forEach(post => {
+                let postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.description}</p>
+                    <p>Posted by: <span class="user">${post.postuser}</span> at <span class="time">${new Date(post.time).toLocaleString()}</span></p>
+                    <p>Category: ${post.category}</p>
+                    ${post.image ? `<img src="data:image/jpeg;base64,${post.image}" alt="Post Image" style="max-width:200px;">` : ''}
+                `;
+                postsContainer.appendChild(postElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching posts:', error);
+            postsContainer.innerHTML = '<p>Error loading posts. Please try again later.</p>';
+        });
+    }
 
-    <div class="sample-post-3">
-        <p>This is a sample title. <span class="user1">Post created by Sample User 123</span></p>
-        <p>This is a sample post to describe some type of discussion that the user wants to talk about.</p>
-    </div>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchPosts(); // Fetch posts initially
+        setInterval(fetchPosts, 5000); // Fetch posts every 5 seconds
+    });
+    </script>
 </body>
 
 </html>
