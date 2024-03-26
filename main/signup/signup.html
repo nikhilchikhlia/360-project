@@ -2,26 +2,59 @@
 <html lang="en">
 
 <head>
+<<<<<<< Updated upstream
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
     <link rel="stylesheet" href="signup.css">
+<script>
+    function checkPass(str) {
+        if(str.length == 0) {
+            document.getElementById("password-criteria").style.display = "none";
+            return;
+        }
+        const passRE = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$");
+        if(!passRE.test(str)) {
+            document.getElementById("password-criteria").style.display = "block";
+        } else {
+            document.getElementById("password-criteria").style.display = "none";
+        }
+    }
+    function passMatch() {
+        const pass = document.getElementById("firstPass").value;
+        const confirmPass = document.getElementById("secondPass").value;
+        if(pass != confirmPass) {
+            document.getElementById("password-match").style.display = "block";
+        } else {
+            document.getElementById("password-match").style.display = "none";
+        }
+    }
+</script>
 </head>
-
-
 <body>
   
   <a href="../landing/landing.html"><button class="returnBtn">Return Home</button></a>
   <div class="signup-container">
     <h2>Sign Up</h2>
-    <form method="post" action="test_signup.php" id="signup-form">
+    <!--  - attribs for submitting form -->
+    <form id="signup-form" method="post" action="test_signup.php">
         <input name="firstName" type="text" placeholder="First Name" required>
         <input name="lastName" type="text" placeholder="Last Name" required>
         <input name="username" type="text" placeholder="Username" required>
         <input name="email" type="email" placeholder="Email" required>
-        <input name="password" type="password" placeholder="Password" required>
-        <input name="confirmedPass" type="password" placeholder="Confirm Password" required>
-        <button type="submit">Sign Up</button>
+        <input id="firstPass" name="password" type="password" placeholder="Password" required onkeyup="checkPass(this.value)">
+        <div id="password-criteria" class="password-crit-container">
+            <span>Password does not meet criteria! Your password should contain: </span>
+            <ul>
+                <li>At least 8 characters</li>
+                <li>One uppercase letter</li>
+                <li>One lowercase letter</li>
+                <li>One special character (*, !, #, etc.)</li>
+            </ul>
+        </div>
+        <input id="secondPass" name="confirmedPass" type="password" placeholder="Confirm Password" required onkeyup="passMatch()">
+        <span id="password-match" class="password-crit-container">Passwords do not match!</span>
+        <button id="signup-btn" type="submit">Sign Up</button>
         <p class="signin-text">Already have an account? <a href="#">Sign In</a></p>
     </form>
   </div>

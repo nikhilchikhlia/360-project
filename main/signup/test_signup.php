@@ -7,23 +7,16 @@
 </head>
 <body>
     <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $confirmedPassword = $_POST['confirmedPass'];
-
-        if ($password !== $confirmedPassword) {
-            echo "Passwords do not match.";
-            exit;
-        }
-
+        $firstName = $_REQUEST['firstName'];
+        $lastName = $_REQUEST['lastName'];
+        $email = $_REQUEST['email'];
+        $username = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
         try {
-            $connString = "mysql:host=localhost;dbname=testing";
-            $user = "root";
-            $connPassword = "";
+            $connString = "mysql:host=localhost;dbname=db_55015176";
+            $user = "55015176";
+            $connPassword = "55015176";
+
     
             $pdo = new PDO($connString, $user, $connPassword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -44,7 +37,6 @@
         } catch (PDOException $e) {
             die($e->getMessage());
         }
-    }
     ?>
 </body>
 </html>
