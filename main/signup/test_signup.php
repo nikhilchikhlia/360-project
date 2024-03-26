@@ -8,9 +8,6 @@
 
     <body>
         <?php
-
-
-
             $firstName = $_REQUEST['firstName'];
             $lastName = $_REQUEST['lastName'];
             $email = $_REQUEST['email'];
