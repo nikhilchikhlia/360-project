@@ -37,7 +37,7 @@ html {
 }
 
 .profile-container .bio-input {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -45,6 +45,7 @@ html {
 }
 
 .profile-container .logout-btn {
+  margin-top: 50px;
   padding: 10px;
   width: 100%;
   background-color: #333;
@@ -72,4 +73,24 @@ html {
 
 .returnBtn:hover {
   background-color: #555;
+}
+
+#profileBio {
+  border: 1px solid black;
+  margin: 10px 0 10px 0;
+  padding: 7px;
+}
+
+.bioForm button {
+  margin-bottom: 10px;
+}
+
+.imageForm #image-upload {
+  position: relative;
+  left: 3em;
+  margin: 10px 0 10px 0;
+}
+
+.imageForm #uploadImage {
+  margin-bottom: 20px;
 }
