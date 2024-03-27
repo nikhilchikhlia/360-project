@@ -28,6 +28,11 @@
             document.getElementById("password-match").style.display = "none";
         }
     }
+    function showToast() {
+        var snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        setTimeout(function(){snackbar.className.replace("show", ""); }, 3000);
+    }
 </script>
 </head>
 <body>
@@ -53,11 +58,11 @@
         </div>
         <input id="secondPass" name="confirmedPass" type="password" placeholder="Confirm Password" required onkeyup="passMatch()">
         <span id="password-match" class="password-crit-container" style="display: none;">Passwords do not match!</span>
-        <button id="signup-btn" type="submit">Sign Up</button>
+        <button id="signup-btn" type="submit" onclick="showToast()">Sign Up</button>
         <p class="signin-text">Already have an account? <a href="../login/login.html">Sign In</a></p>
     </form>
   </div>
-
+  <div id="snackbar">Successfully signed up!</div>
 </body>
 
 </html>
