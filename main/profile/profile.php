@@ -3,9 +3,9 @@ session_start();
 
 // Database connection parameters
 $host = 'localhost';
-$dbname = 'testing'; // Specify your database name here
-$dbUsername = 'root'; // Specify your database username here (e.g., 'root')
-$dbPassword = ''; // Specify your database password here
+$dbname = 'db_55015176'; 
+$dbUsername = '55015176'; 
+$dbPassword = '55015176'; 
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {

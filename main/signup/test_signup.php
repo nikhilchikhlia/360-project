@@ -12,6 +12,7 @@
         $email = $_REQUEST['email'];
         $username = $_REQUEST['username'];
         $password = $_REQUEST['password'];
+        $signedup = true;
         try {
             $connString = "mysql:host=localhost;dbname=db_55015176";
             $user = "55015176";
@@ -33,7 +34,7 @@
             ]);
     
             echo "User successfully registered.";
-            header("Location: ../login/login.html");
+            header("Location: ../login/login.html?signedup=$signedup");
         } catch (PDOException $e) {
             die($e->getMessage());
         }

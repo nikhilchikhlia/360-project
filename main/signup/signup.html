@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-<<<<<<< Updated upstream
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
@@ -43,7 +42,7 @@
         <input name="username" type="text" placeholder="Username" required>
         <input name="email" type="email" placeholder="Email" required>
         <input id="firstPass" name="password" type="password" placeholder="Password" required onkeyup="checkPass(this.value)">
-        <div id="password-criteria" class="password-crit-container">
+        <div id="password-criteria" class="password-crit-container" style="display: none;">
             <span>Password does not meet criteria! Your password should contain: </span>
             <ul>
                 <li>At least 8 characters</li>
@@ -53,12 +52,11 @@
             </ul>
         </div>
         <input id="secondPass" name="confirmedPass" type="password" placeholder="Confirm Password" required onkeyup="passMatch()">
-        <span id="password-match" class="password-crit-container">Passwords do not match!</span>
+        <span id="password-match" class="password-crit-container" style="display: none;">Passwords do not match!</span>
         <button id="signup-btn" type="submit">Sign Up</button>
-        <p class="signin-text">Already have an account? <a href="#">Sign In</a></p>
+        <p class="signin-text">Already have an account? <a href="../login/login.html">Sign In</a></p>
     </form>
   </div>
-
 </body>
 
 </html>

@@ -3,9 +3,10 @@ session_start();
 
 // Database connection parameters
 $host = 'localhost';
-$dbname = 'testing'; // Make sure the database name is correct
-$dbUsername = 'root'; // Your database username
-$dbPassword = ''; // Your database password
+$dbname = 'db_55015176'; // Make sure the database name is correct
+$dbUsername = '55015176'; 
+$dbPassword = '55015176'; 
+
 
 if (!isset($_SESSION['username'])) {
     echo "You must be logged in to update your image.";

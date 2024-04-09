@@ -27,6 +27,14 @@
       <button type="submit" class="btn">Sign In</button> <!-- Ensure this is a submit button -->
     </form>
     <p><a href="signup.html">Create an Account</a></p> <!-- Adjusted link to point to signup.html -->
+    <div id="snackbar">Successfully signed up!</div>
+  <script>
+    (function() {
+      var snackbar = document.getElementById("snackbar");
+      snackbar.className = "show";
+      setTimeout(function(){snackbar.style.display = "none" }, 3000);
+    })();
+  </script>
   </div>
 </body>
 
