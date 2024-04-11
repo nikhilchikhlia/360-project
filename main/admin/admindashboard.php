@@ -7,9 +7,6 @@ if (!isset($_SESSION['admin_username'])) {
 }
 
 $host = 'localhost';
-$dbname = 'db_55015176'; 
-$dbUsername = '55015176'; 
-$dbPassword = '55015176'; 
 
 $users = []; // Initialize an empty array to hold user data
 try {
@@ -28,7 +25,7 @@ try {
 <head>
     <meta charset="utf-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class='users-container'>

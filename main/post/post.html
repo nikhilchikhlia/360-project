@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <a href="../landing/landing.html"><button class="returnBtn">Return Home</button></a>
+        <div id="main-post-container"></div>
+
+        <script>
+            function fetchMainPost() {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const postId = urlParams.get('postid');
+                fetch(`get_main_post.php?postid=${postId}`)
+                .then(response => response.json())
+                .then(posts => {
+                    var mainPostContainer = document.getElementById('main-post-container');
+                    mainPostContainer.innerHTML = '';
+                    console.log(posts[0]);
+                })
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                fetchMainPost(); // Fetch posts initially
+            });
+        </script>
+    </body>
+</html>

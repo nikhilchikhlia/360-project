@@ -32,7 +32,7 @@
                 let postElement = document.createElement('div');
                 postElement.className = 'post';
                 postElement.innerHTML = `
-                    <h3>${post.title}</h3>
+                    <h3><a href="../post/post.html?postid=${post.postid}">${post.title}</h3></a>
                     <p>${post.description}</p>
                     <p>Posted by: <span class="user">${post.postuser}</span> at <span class="time">${new Date(post.time).toLocaleString()}</span></p>
                     <p>Category: ${post.category}</p>
