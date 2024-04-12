@@ -23,7 +23,7 @@
 
     <script>
     function fetchPosts() {
-        fetch('get_posts.php') // Adjust the path if necessary
+        fetch('get_posts.php') 
         .then(response => response.json())
         .then(posts => {
             let postsContainer = document.getElementById('postsContainer');
