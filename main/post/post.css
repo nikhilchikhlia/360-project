@@ -1,0 +1,80 @@
+.yerr {
+    border: 1px solid black;
+    width: fit-content;
+    height: 35%;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    background-color: #C7CCDB;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    top: 75px;
+}
+
+.title-post-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 2em;
+}
+
+.post-text-content {
+    display: inline;
+    float: left;
+    margin-left: 1em;
+    margin-top: 5em;
+    width: 80%;
+}
+
+.returnBtn {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.returnBtn:hover {
+    background-color: #555;
+}
+
+.reply-box {
+    position: relative;
+    top: 75px;
+}
+
+.replyBtn {
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    top: 3.25em;
+    left:1em;
+}
+
+#comments {
+    display: flex;
+    justify-content: left;
+    align-items:start;
+    flex-direction: column;
+    padding-top: 4em;
+}
+
+.comment {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 400px;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    background-color: #C7CCDB;
+    border-radius: 8px;
+}

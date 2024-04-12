@@ -7,6 +7,9 @@ if (!isset($_SESSION['admin_username'])) {
 }
 
 $host = 'localhost';
+$dbname = 'db_55015176'; 
+$dbUsername = '55015176'; 
+$dbPassword = '55015176'; 
 
 $users = []; // Initialize an empty array to hold user data
 try {

@@ -4,29 +4,84 @@
         <meta charset="utf-8">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="post.css">
     </head>
     <body>
         <a href="../landing/landing.html"><button class="returnBtn">Return Home</button></a>
-        <div id="main-post-container"></div>
-
+        <div id="main-container">
+            <div class="yerr">
+                <div class="title-post-container"></div>
+                <div class="post-text-content"></div>
+            </div>
+            <div>
+                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                <form action="" method="post" id="commentForm" target="dummyframe">
+                    <textarea name="comment-text" class="reply-box" rows="4" cols="50"></textarea>
+                    <button type="submit" class="replyBtn" onclick="refreshComments()">Reply</button>
+                </form>
+            </div>
+            
+        </div>
+        <div id="comments"></div>
+        
+        
         <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const postId = urlParams.get('postid');
             function fetchMainPost() {
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const postId = urlParams.get('postid');
                 fetch(`get_main_post.php?postid=${postId}`)
                 .then(response => response.json())
                 .then(posts => {
-                    var mainPostContainer = document.getElementById('main-post-container');
-                    mainPostContainer.innerHTML = '';
-                    console.log(posts[0]);
+                    var titlePostContainer = document.getElementsByClassName('title-post-container');
+                    titlePostContainer[0].innerHTML = '';
+                    titlePostContainer[0].innerHTML = `
+                    <h1>${posts[0]['title']}</h1>
+                    ${posts[0]['image'] ? `<img src="data:image/jpeg;base64,${posts[0]['image']}" alt="Post Image" style="max-width:200px; max-height: 200px; float:left;">`: ''}
+                    `
+                    var postTextContainer = document.getElementsByClassName('post-text-content');
+                    postTextContainer[0].innerHTML = '';
+                    postTextContainer[0].innerHTML = `
+                    <span style="font-size: 14pt;">Creator: ${posts[0]['postuser']}<br/>Time Created: ${posts[0]['time']}<br/>Category: ${posts[0]['category']}</span><br/>
+                    <span style="font-size: 18pt;"><br/>${posts[0]['description']}</span>
+                    `;
                 })
             }
 
+            function refreshComments() {
+                // document.location.replace(`./get_comments.php?postid=${postId}`)
+                let commentContainer = document.getElementById("comments");
+                fetch(`get_comments.php?postid=${postId}`)
+                .then(response => response.json())
+                .then(posts => {
+                    
+                    commentContainer.innerHTML = '';
+                    posts.forEach(post => {
+                        let postElement = document.createElement('div');
+                        postElement.className = 'comment';
+                        postElement.innerHTML = `
+                            <h3>${post.threaduser}</h3>
+                            <p>${post.posttext}</p>
+                        `;
+                        commentContainer.appendChild(postElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching posts:', error);
+                    commentContainer.innerHTML = '<p>Error loading posts. Please try again later.</p>';
+                }); 
+            }
             document.addEventListener('DOMContentLoaded', function() {
                 fetchMainPost(); // Fetch posts initially
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const postId = urlParams.get('postid');
+                document.getElementById("commentForm").setAttribute("action", `write_comment.php?postid=${postId}`);
+                console.log(document.getElementById("commentForm").getAttribute("target"));
+                refreshComments();
+                setInterval(refreshComments, 5000);
             });
         </script>
+        
     </body>
 </html>
