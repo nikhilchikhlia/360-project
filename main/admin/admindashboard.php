@@ -28,7 +28,7 @@ try {
 <head>
     <meta charset="utf-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class='users-container'>
