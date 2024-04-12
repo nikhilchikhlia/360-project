@@ -6,14 +6,14 @@ session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 } else {
-    heading("Location: login-message.html");
+    header("Location: login-message.html");
 }
 
 // Assuming you've already connected to your database above this point
 $host = 'localhost';
 $dbname = 'db_55015176'; 
 $dbUsername = '55015176'; 
-$dbPassword = '55015176'; 
+$dbPassword = '55015176';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbUsername, $dbPassword);
